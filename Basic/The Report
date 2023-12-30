@@ -1,0 +1,9 @@
+select 
+  case
+    when grades.grade >= 8 then students.name 
+    else 'NULL' end as nameornull, 
+    grades.grade,
+    students.marks
+from students 
+left join grades on students.marks between grades.min_mark and grades.max_mark
+order by grades.grade desc, nameornull asc, students.marks asc;
