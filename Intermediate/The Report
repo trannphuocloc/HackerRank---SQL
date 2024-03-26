@@ -1,9 +1,9 @@
-select 
-  case
-    when grades.grade >= 8 then students.name 
-    else 'NULL' end as nullname, 
-    grades.grade,
-    students.marks
-from students 
-left join grades on students.marks between grades.min_mark and grades.max_mark
-order by grades.grade desc, nullname asc, students.marks asc;
+SELECT 
+    CASE
+        WHEN g.Grade >= 8 THEN s.Name
+        ELSE 'NULL' END AS null_name,
+    g.Grade,
+    s.Marks
+FROM Students s 
+LEFT JOIN Grades g ON s.Marks BETWEEN g.Min_Mark AND g.Max_Mark
+ORDER BY g.Grade DESC, s.Name, s.Marks;
